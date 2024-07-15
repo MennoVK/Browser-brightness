@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="scripts/popup.js"></script>
+    <link rel="stylesheet" href="styles/popupStyles.css">
+    <title>Brightness</title>
+  </head>
+  <body>
+    <header>
+      <h1>Brightness</h1>
+    </header>
+    <main>
+      <section class="slider">
+        <img src="assets/moon.svg" alt="moon">
+        <input
+          type="range"
+          min="0"
+          max="200"
+          value="100"
+          id="brightnessSlider"
+          name="brightness"
+          class="range"
+          step="5"
+        >
+        <img src="assets/sun.svg" alt="sun">
+      </section>
+      <section class="storePreference">
+        <input type="checkbox" id="storePreferenceCheck"/>
+        <label>Store for this page</label>
+      </section>
+    </main>
+    <footer>
+        <p>Created By:</p>
+        <a href="https://mennoveerkamp.com" target="_blank">Menno Veerkamp</a>
+        <!-- <a href="https://www.buymeacoffee.com/mennoveerkamp" target="_blank"
+          >Buy me a coffee</a
+        > -->
+    </footer>
+  </body>
+</html>

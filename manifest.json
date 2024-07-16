@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Brightness",
+    "name": "Chrome brightness",
     "description": "Control the brightness for any website",
     "version": "0.0.1",
     "author": "Menno Veerkamp",

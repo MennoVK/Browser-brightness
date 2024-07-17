@@ -5,4 +5,4 @@ A browser-extension which adds brightness control to Chrome
 <br>
 <h3>Find this browser-extension here:</h2> 
 
-[Chrome]()
+[Chrome](https://chromewebstore.google.com/detail/brightness/gjkclppdklmglkoilofecjmmajaaggae)

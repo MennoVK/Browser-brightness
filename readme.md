@@ -1,6 +1,6 @@
-<h1>Chrome brightness</h1>
+<h1>Brightness</h1>
 
-A browser-extension which adds brightness control to Chrome
+A browser-extension which adds brightness control
 
 ![popup preview](https://github.com/MennoVK/Chrome-brightness/blob/master/screenshots/popup.png?raw=true)
 

@@ -4,6 +4,12 @@
     "description": "Control the brightness for any website",
     "version": "0.0.2",
     "author": "Menno Veerkamp",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "brightness@mennoveerkamp.com",
+            "strict_min_version": "109.0"
+        }
+    },
     "icons": {
         "16": "assets/icons/icon16.png",
         "32": "assets/icons/icon32.png",
@@ -13,7 +19,7 @@
     "action": {
         "default_popup": "index.html"
     },
-    "permissions": ["storage", "scripting", "activeTab"],
+    "permissions": ["storage", "activeTab"],
     "content_scripts": [
         {
             "matches": ["<all_urls>"],

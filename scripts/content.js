@@ -1,28 +1,32 @@
-(() => {
-    html = document.documentElement;
-    urlObject = new URL(location.href);
-    domain = urlObject.origin.replace("www.", "");
+import browser from "webextension-polyfill";
 
-    const setGlobalBrightness = async () => {
-        const result = await chrome.storage.local.get("globalBrightness");
-        const globalBrightness = result.globalBrightness;
-        html.style.setProperty("filter", `brightness(${globalBrightness / 100})`, "important");
-    };
+const domain = new URL(location.href).origin.replace(
+    /^(https?:\/\/)www\./,
+    "$1"
+);
+const root = document.documentElement;
 
-    const setLocalBrightness = async () => {
-        const result = await chrome.storage.local.get("knownWebsites");
-        if (result.knownWebsites?.length) {
-            let index = result.knownWebsites.findIndex((obj) => obj.domain === domain);
+const applyBrightness = async () => {
+    const result = await browser.storage.local.get([
+        "knownWebsites",
+        "globalBrightness",
+    ]);
+    const sitePreference = (result.knownWebsites || []).find(
+        (site) => site.domain === domain
+    );
+    const brightness = sitePreference?.brightness ?? result.globalBrightness;
 
-            if (index != -1) {
-                let brightness = result.knownWebsites[index].brightness;
+    if (brightness === undefined) {
+        root.style.removeProperty("filter");
+        return;
+    }
 
-                html.style.setProperty("filter", `brightness(${brightness / 100})`, "important");
-                return;
-            }
-        }
-        setGlobalBrightness();
-    };
+    root.style.setProperty("filter", `brightness(${brightness / 100})`, "important");
+};
 
-    setLocalBrightness();
-})()
+applyBrightness();
+browser.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName === "local" && (changes.knownWebsites || changes.globalBrightness)) {
+        applyBrightness();
+    }
+});
